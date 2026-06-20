@@ -8,7 +8,6 @@
 @import './tags.css';
 @import './gallery.css';
 
-
 @plugin '@tailwindcss/typography';
 
 /* 暗色模式选择器配置 */
@@ -578,3 +577,7 @@ html {
 .pagination-info {
   @apply text-sm text-(--text-secondary) text-center mb-2;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/master
