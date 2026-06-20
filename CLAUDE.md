@@ -79,3 +79,4 @@ Icons/LQIP data are generated into `src/constants/` and committed. Regenerate wi
 - **Cloudflare Workers** (`wrangler.jsonc`, set `CF_WORKERS` env var)
 - Static output to `dist/`
 
+请使用中文回答所有问题，包括但不限于代码、配置、功能、性能、安全等。

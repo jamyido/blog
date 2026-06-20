@@ -1,0 +1,45 @@
+/* Gallery styles must be available even when photo cards are decrypted at runtime. */
+.gallery-masonry {
+	column-count: 2;
+	column-gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+	.gallery-masonry {
+		column-width: var(--col-width, 240px);
+		column-count: auto;
+	}
+}
+
+.gallery-photo-card {
+	break-inside: avoid;
+	margin-bottom: 0.75rem;
+}
+
+.gallery-photo-trigger {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	border-radius: 0.75rem;
+}
+
+.gallery-photo-trigger .lqip-placeholder {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+
+.gallery-photo-image {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	opacity: 0;
+	transition:
+		opacity 0.5s ease-out,
+		transform 0.5s ease-out;
+}
+
+.gallery-photo-trigger:hover .gallery-photo-image {
+	transform: scale(1.05);
+}

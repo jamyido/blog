@@ -1,7 +1,6 @@
 {
   "src:assets/images/firefly.png": "72d3af9ee699aced93",
   "src:assets/images/cover.avif": "7c6f966a628a816e82",
-  "src:assets/images/avatar.avif": "dcd8d5d1cecabea9a9",
   "public:gallery/firefly-2026/cover.avif": "7588a28a8f989e8d88",
   "public:gallery/firefly-2026/1.avif": "c8bca9dde6d2babfb5",
   "src:assets/images/DesktopWallpaper/d6.avif": "d9e5ec9ca7aebda9b0",
@@ -18,5 +17,17 @@
   "src:assets/images/MobileWallpaper/m1.avif": "cccce0cbc0d59294c0",
   "public:assets/images/sponsor/wechat.png": "d5d5d5dad9d7dbd8cf",
   "public:assets/images/sponsor/alipay.png": "8ebbde91bedf93c0e0",
-  "public:assets/images/ad/ad1.webp": "a1b8b68a8e918c8f93"
+  "public:assets/images/ad/ad1.webp": "a1b8b68a8e918c8f93",
+  "src:assets/images/ice.png": "0c2b4a0c2a461e3a53",
+  "src:assets/images/avatar.jpg": "ceb9d2c7a4c3b890a8",
+  "src:assets/images/DesktopWallpaper/d4.png": "6675b66f7ebc727fc1",
+  "src:assets/images/DesktopWallpaper/d3.jpg": "98a0a09c9eab8f8b9a",
+  "src:assets/images/DesktopWallpaper/d2.jpg": "e3d4edeabadbc6bde5",
+  "src:assets/images/DesktopWallpaper/d1.jpg": "7c7f89898796a8a5b7",
+  "src:assets/images/MobileWallpaper/m6.jpg": "a188b69e88b69c92b9",
+  "src:assets/images/MobileWallpaper/m5.png": "936998b28ab1795289",
+  "src:assets/images/MobileWallpaper/m4.jpg": "9873abd7a7d2c799c9",
+  "src:assets/images/MobileWallpaper/m3.jpg": "ae87bdb089b9ceb3df",
+  "src:assets/images/MobileWallpaper/m2.jpg": "ae86bdb089b9ceb3df",
+  "src:assets/images/MobileWallpaper/m1.png": "b7addaddc4dfc6a7dd"
 }

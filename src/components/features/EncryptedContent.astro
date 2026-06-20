@@ -8,11 +8,12 @@ interface Props {
 	password: string;
 	slug: string;
 	hint?: string;
+	rawHtml?: string;
 }
 
-const { password, slug, hint = "" } = Astro.props;
+const { password, slug, hint = "", rawHtml: providedRawHtml } = Astro.props;
 
-const rawHtml = await Astro.slots.render("default");
+const rawHtml = providedRawHtml ?? (await Astro.slots.render("default"));
 const encryptedData = encryptContent(rawHtml, password, slug);
 
 const labels = {

@@ -31,11 +31,34 @@ if (!albumMeta) {
 const photos = scanAlbumPhotos(albumMeta.id);
 const cover = getAlbumCover(albumMeta, photos);
 const columnWidth = galleryConfig.columnWidth || 240;
+const currentAlbumId = albumMeta.id;
 
 // LQIP 渐变占位
 const coverLqipProps = cover
 	? getLqipProps(cover, undefined, true)
 	: { style: "" };
+
+function escapeHtml(value: string): string {
+	return value
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;")
+		.replace(/'/g, "&#39;");
+}
+
+function renderEncryptedPhotoCard(photo: string): string {
+	const lqipProps = getLqipProps(photo, undefined, true);
+	const safePhoto = escapeHtml(photo);
+	const safeAlbumId = escapeHtml(currentAlbumId);
+	const safeStyle = escapeHtml(lqipProps.style);
+
+	return `<div class="gallery-photo-card"><div data-fancybox="gallery-${safeAlbumId}" data-src="${safePhoto}" data-type="image" class="gallery-photo-trigger"><div class="lqip-placeholder" style="${safeStyle}" aria-hidden="true"></div><img src="${safePhoto}" alt="" loading="lazy" decoding="async" class="gallery-photo-image"></div></div>`;
+}
+
+const encryptedGalleryHtml = albumMeta.password
+	? `<div class="gallery-masonry" style="--col-width: ${columnWidth}px;">${photos.map(renderEncryptedPhotoCard).join("")}</div>`
+	: "";
 ---
 
 <MainGridLayout title={albumMeta.name} description={albumMeta.description || ""}>
@@ -133,20 +156,16 @@ const coverLqipProps = cover
     <div class="card-base z-10 px-6 py-6 relative w-full">
       {photos.length > 0 ? (
         albumMeta.password ? (
-          <EncryptedContent password={albumMeta.password} slug={albumMeta.id} hint={albumMeta.passwordHint}>
-            <div
-              class="gallery-masonry"
-              style={`column-count: 2; column-gap: 0.75rem; --col-width: ${columnWidth}px;`}
-            >
-              {photos.map((photo) => (
-                <PhotoCard src={photo} albumId={albumMeta.id} />
-              ))}
-            </div>
-          </EncryptedContent>
+          <EncryptedContent
+            password={albumMeta.password}
+            slug={albumMeta.id}
+            hint={albumMeta.passwordHint}
+            rawHtml={encryptedGalleryHtml}
+          />
         ) : (
           <div
             class="gallery-masonry"
-            style={`column-count: 2; column-gap: 0.75rem; --col-width: ${columnWidth}px;`}
+            style={`--col-width: ${columnWidth}px;`}
           >
             {photos.map((photo) => (
               <PhotoCard src={photo} albumId={albumMeta.id} />
@@ -161,13 +180,4 @@ const coverLqipProps = cover
       )}
     </div>
   </div>
-
-  <style is:global>
-    @media (min-width: 640px) {
-      .gallery-masonry {
-        column-width: var(--col-width, 240px) !important;
-        column-count: auto !important;
-      }
-    }
-  </style>
 </MainGridLayout>
